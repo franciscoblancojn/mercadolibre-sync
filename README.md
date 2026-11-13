@@ -2,7 +2,7 @@
 
 > Publica y sincroniza productos de WooCommerce en MercadoLibre: conexión OAuth, selección de productos, mapeo persistente y actualizaciones automáticas.
 
-**Versión:** 1.0.0 · **WordPress:** 5.8+ · **PHP:** 7.4+ · **WooCommerce:** requerido · **Licencia:** GPLv2+
+**Versión:** 1.0.1 · **WordPress:** 5.8+ · **PHP:** 7.4+ · **WooCommerce:** requerido · **Licencia:** GPLv2+
 
 📋 [Registro de cambios](CHANGELOG.md) · 🤖 [Reglas para IAs](AGENTS.md) · 📦 [Releases](https://github.com/franciscoblancojn/mercadolibre-sync/releases)
 
