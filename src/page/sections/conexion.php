@@ -18,7 +18,7 @@ $disconnect_url = wp_nonce_url(admin_url('admin-post.php?action=' . MLS_API_SETT
 
 <table class="form-table" role="presentation">
     <tr>
-        <th scope="row"><label for="mls-site">País</label></th>
+        <th scope="row"><label for="mls-site">País</label><?php MLS_PAGE_TIP('El país donde está registrada la <strong>cuenta vendedora</strong> que va a publicar (el dominio donde vendes: mercadolibre.com.co = MCO, .com.mx = MLM, .com.ar = MLA…).<br>Si dudas, conecta la cuenta y pulsa «Probar conexión»: muestra el país real de la cuenta y avisa si no coincide.'); ?></th>
         <td>
             <select id="mls-site" name="mls[site_id]">
                 <?php foreach (MLS_USE_DATA_CONFIG::SITES as $code => $site) : ?>
@@ -29,7 +29,7 @@ $disconnect_url = wp_nonce_url(admin_url('admin-post.php?action=' . MLS_API_SETT
         </td>
     </tr>
     <tr>
-        <th scope="row">Redirect URI</th>
+        <th scope="row">Redirect URI<?php MLS_PAGE_TIP('No se consigue: la genera este plugin. Cópiala y pégala en tu aplicación de MercadoLibre:<ol><li>Entra al <a href="https://developers.mercadolibre.com/devcenter" target="_blank" rel="noopener noreferrer">DevCenter</a>.</li><li>Abre tu aplicación → «Editar».</li><li>Pégala en <strong>URIs de redirect</strong> y guarda.</li></ol>Debe coincidir carácter por carácter (con <code>https://</code> y sin espacios); si no, MercadoLibre responde «redirect_uri mismatch».'); ?></th>
         <td>
             <input type="text" readonly class="large-text code mls-copy" value="<?= esc_attr($redirect) ?>" onclick="this.select()">
             <p class="description">Regístrala tal cual en la aplicación (campo «URI de redirect»). MercadoLibre exige HTTPS.</p>
@@ -39,27 +39,27 @@ $disconnect_url = wp_nonce_url(admin_url('admin-post.php?action=' . MLS_API_SETT
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="mls-client-id">App ID (client_id)</label></th>
+        <th scope="row"><label for="mls-client-id">App ID (client_id)</label><?php MLS_PAGE_TIP('Número que identifica tu aplicación. Para conseguirlo:<ol><li>Entra al <a href="https://developers.mercadolibre.com/devcenter" target="_blank" rel="noopener noreferrer">DevCenter</a> con la cuenta de MercadoLibre (idealmente la vendedora).</li><li>«Crear una aplicación»: nombre, nombre corto, descripción y logo.</li><li>En «URIs de redirect» pega la Redirect URI de arriba.</li><li>Permisos: lectura, escritura y <code>offline_access</code> (este último permite renovar el token solo).</li><li>Guarda: en la lista de aplicaciones aparece el <strong>App ID</strong> (solo números).</li></ol>'); ?></th>
         <td>
             <input type="text" id="mls-client-id" name="mls[client_id]" value="<?= esc_attr($config['client_id']) ?>" class="regular-text" autocomplete="off">
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="mls-client-secret">Secret Key (client_secret)</label></th>
+        <th scope="row"><label for="mls-client-secret">Secret Key (client_secret)</label><?php MLS_PAGE_TIP('Clave privada de la aplicación. Está en el <a href="https://developers.mercadolibre.com/devcenter" target="_blank" rel="noopener noreferrer">DevCenter</a>, en la misma aplicación del App ID, como <strong>Secret Key</strong> o «Clave secreta» (botón para ver/copiar).<br>No la compartas. Si la renuevas en MercadoLibre, pégala aquí de nuevo y pulsa «Reconectar».'); ?></th>
         <td>
             <input type="password" id="mls-client-secret" name="mls[client_secret]" value="" class="regular-text" autocomplete="new-password" placeholder="<?= $config['client_secret'] ? 'Guardada (deja en blanco para conservarla)' : 'Secret Key de la aplicación' ?>">
             <p class="description">No se vuelve a mostrar. Deja el campo vacío para conservar la guardada.</p>
         </td>
     </tr>
     <tr>
-        <th scope="row">PKCE</th>
+        <th scope="row">PKCE<?php MLS_PAGE_TIP('Seguridad extra opcional de OAuth. Revisa la configuración de tu aplicación en el <a href="https://developers.mercadolibre.com/devcenter" target="_blank" rel="noopener noreferrer">DevCenter</a>: si la opción <strong>PKCE</strong> está activada allí, márcala aquí también; si no, déjala sin marcar.<br>Si no coinciden, la conexión falla con un error de <code>code_verifier</code>.'); ?></th>
         <td>
             <label><input type="checkbox" name="mls[use_pkce]" value="1" <?= checked($config['use_pkce'], 1, false) ?>> Mi aplicación tiene activado PKCE</label>
             <p class="description">Márcalo solo si activaste PKCE al crear la aplicación (si está activo es obligatorio).</p>
         </td>
     </tr>
     <tr>
-        <th scope="row">Cuenta</th>
+        <th scope="row">Cuenta<?php MLS_PAGE_TIP('No hay que copiar ningún token:<ol><li>Guarda el App ID y la Secret Key.</li><li>Pulsa «Conectar con MercadoLibre».</li><li>Inicia sesión con la <strong>cuenta vendedora</strong> donde quieres publicar (cierra antes otra sesión de MercadoLibre si la hay) y acepta los permisos.</li><li>Vuelves aquí con la cuenta conectada.</li></ol>El token dura 6 horas y se renueva solo. Si se revoca el permiso o pasan meses sin uso, pulsa «Reconectar».'); ?></th>
         <td>
             <?php if ($connected) : ?>
                 <p>
