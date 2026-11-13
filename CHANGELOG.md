@@ -4,7 +4,7 @@ Todos los cambios importantes del plugin MercadoLibre Sync. Formato basado en [K
 
 > ✍️ Antes de publicar, agrega arriba una sección `## [Sin publicar]` con los cambios. `npm run push-v -- patch|minor|major` la renombra a `## [X.Y.Z] - fecha`, y no publica si esa sección no existe.
 
-## [Sin publicar]
+## [1.0.0] - 2026-11-12
 
 ### ✨ Añadido
 - 🎉 Primera versión: Publica y sincroniza productos de WooCommerce en MercadoLibre: conexión OAuth, selección de productos, mapeo persistente y actualizaciones automáticas.

@@ -3,7 +3,7 @@
 Plugin Name: MercadoLibre Sync
 Plugin URI: https://github.com/franciscoblancojn/mercadolibre-sync
 Description: Publica y sincroniza productos de WooCommerce en MercadoLibre: conexión OAuth, selección de productos, mapeo persistente y actualizaciones automáticas.
-Version: 0.0.0
+Version: 1.0.0
 Author: franciscoblancojn
 Author URI: https://franciscoblanco.vercel.app/
 License: GPL2+
